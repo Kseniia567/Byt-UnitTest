@@ -34,6 +34,7 @@ public class BankTest {
 
 	@Test
 	public void testOpenAccount() throws AccountExistsException, AccountDoesNotExistException { //fail
+		//an error occurred in method openAccount()
 		SweBank.openAccount("Kseniia");
 		SweBank.deposit("Kseniia", new Money(100000000, SEK));
 		assertEquals(100000000, SweBank.getBalance("Kseniia").intValue());
@@ -41,14 +42,14 @@ public class BankTest {
 
 	@Test
 	public void testDeposit() throws AccountDoesNotExistException { //fail
-		SweBank.deposit("Bob", new Money(100000000, SEK));
+		SweBank.deposit("Bob", new Money(100000000, SEK));//an error occurred in Deposit() method
 		assertEquals(100000000, SweBank.getBalance("Bob").intValue());
 	}
 
 	@Test
 	public void testWithdraw() throws AccountDoesNotExistException { //fail
 		SweBank.deposit("Bob", new Money(100000000, SEK));
-		SweBank.withdraw("Bob", new Money(100000000, SEK));
+		SweBank.withdraw("Bob", new Money(100000000, SEK));//an error occurred in Withdraw() method
 		assertEquals(0, SweBank.getBalance("Bob").intValue());
 	}
 	
@@ -71,6 +72,7 @@ public class BankTest {
 		SweBank.deposit("Bob", new Money(100000000, SEK));
 		SweBank.transfer("Bob", "Ulrika", new Money(100000000, SEK));
 		assertEquals(0, SweBank.getBalance("Bob").intValue()); //fail
+		//an error occurred in method Transfer (), fixed Transfer between 2 same accounts
 		assertEquals(100000000, SweBank.getBalance("Ulrika").intValue());
 	}
 	

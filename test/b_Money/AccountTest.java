@@ -34,7 +34,7 @@ public class AccountTest {
 	@Test
 	public void testTimedPayment() throws AccountDoesNotExistException {
 		testAccount.addTimedPayment("1", 10, 0, new Money(10000000, SEK), SweBank, "Alice");
-		testAccount.tick();
+		testAccount.tick();//fail, an error occurred in method Tick() class Account
 		assertEquals(0, testAccount.getBalance().getAmount().intValue());
 	}
 
